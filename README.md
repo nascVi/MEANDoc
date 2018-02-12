@@ -8,7 +8,7 @@
 | ---------------------- | --------------- | ---------------- |
 | <img src="https://raw.githubusercontent.com/ihinsdale/mean-local-auth/master/screenshots/passwordresetrequest.png" alt="Password reset request screenshot" width="300px"/> | <img src="https://raw.githubusercontent.com/ihinsdale/mean-local-auth/master/screenshots/changepassword.png" alt="Change password screenshot" width="300px"/> | <img src="https://raw.githubusercontent.com/ihinsdale/mean-local-auth/master/screenshots/successfulpasswordchange.png" alt="Successful password change screenshot" width="300px"/> |
 
-###<a name="description"></a>Description
+### Description
 
 mean-local-auth is a seed/starter app for any project that requires local authentication (as opposed to sign-in via Twitter, Facebook, etc.). mean-local-auth provides sign-up, sign-in, and password resetting functionality.
 
@@ -21,7 +21,7 @@ mean-local-auth is a seed/starter app for any project that requires local authen
 
 **Password resetting** is accomplished using the password-reset-nodemailer node module, which implements the best practice of emailing the user a link containing an expiring token that allows them to choose a new password. mean-local-auth is configured to use AWS's Simple Email Service to send these password reset emails.
 
-##<a name="stack"></a>Stack
+### Stack
 
 | Server side | Client side | Configuration management | Testing |
 | ----------- | ----------- | ------------------------ | ------- |
@@ -31,7 +31,7 @@ mean-local-auth is a seed/starter app for any project that requires local authen
 | ![Redis](https://raw.githubusercontent.com/ihinsdale/mean-local-auth/master/readme_badges/redis.png) |
 | ![Nginx](https://raw.githubusercontent.com/ihinsdale/mean-local-auth/master/readme_badges/nginx.png) |
 
-###<a name="code-overview"></a>Overview of the code
+#### Overview of the code
 
 `/lib` contains server-side app code.
 
@@ -47,7 +47,7 @@ mean-local-auth doesn't use a build tool like Grunt or Gulp. Hence there is no m
 
 mean-local-auth also doesn't distinguish between development/staging/production environments; that is again left to the developer.
 
-##<a name="how-to-use"></a>How to use mean-local-auth to kickstart your project
+### How to use mean-local-auth to kickstart your project
 
 Of course, you can always extract any parts of the code that are useful to you. But mean-local-auth comes with Ansible playbooks which can deploy your very own version of the app, with just a little configuration. For very little work, you'll have:
 * an Angular app supporting local authentication,
@@ -142,6 +142,6 @@ Two things to note about this command:
 
 * `ansible_ssh_port` should be set to whatever you specified for `new_ssh_port` in `/sysadmin/dev/group_vars/all`.
 
-###<a name="license"></a>License
+### License
 
 See LICENSE
