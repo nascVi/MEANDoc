@@ -1,3 +1,15 @@
+Mean Nginx Auths Stack
+===============
+
+### Table of Contents
+
+* Screenshots
+* Description
+* Stack
+* Code-overview
+* How-to-use
+* License
+
 ### Screenshots:
 
 | Sign up | Sign in |
