@@ -8,7 +8,7 @@
 | ---------------------- | --------------- | ---------------- |
 | <img src="https://raw.githubusercontent.com/ihinsdale/mean-local-auth/master/screenshots/passwordresetrequest.png" alt="Password reset request screenshot" width="300px"/> | <img src="https://raw.githubusercontent.com/ihinsdale/mean-local-auth/master/screenshots/changepassword.png" alt="Change password screenshot" width="300px"/> | <img src="https://raw.githubusercontent.com/ihinsdale/mean-local-auth/master/screenshots/successfulpasswordchange.png" alt="Successful password change screenshot" width="300px"/> |
 
-##<a name="description"></a>Description
+###<a name="description"></a>Description
 
 mean-local-auth is a seed/starter app for any project that requires local authentication (as opposed to sign-in via Twitter, Facebook, etc.). mean-local-auth provides sign-up, sign-in, and password resetting functionality.
 
@@ -31,7 +31,7 @@ mean-local-auth is a seed/starter app for any project that requires local authen
 | ![Redis](https://raw.githubusercontent.com/ihinsdale/mean-local-auth/master/readme_badges/redis.png) |
 | ![Nginx](https://raw.githubusercontent.com/ihinsdale/mean-local-auth/master/readme_badges/nginx.png) |
 
-##<a name="code-overview"></a>Overview of the code
+###<a name="code-overview"></a>Overview of the code
 
 `/lib` contains server-side app code.
 
@@ -142,6 +142,6 @@ Two things to note about this command:
 
 * `ansible_ssh_port` should be set to whatever you specified for `new_ssh_port` in `/sysadmin/dev/group_vars/all`.
 
-##<a name="license"></a>License
+###<a name="license"></a>License
 
 See LICENSE
