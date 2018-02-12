@@ -1,248 +1,147 @@
-[![MEAN.JS Logo](http://meanjs.org/img/logo-small.png)](http://meanjs.org/)
+### Screenshots:
 
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/meanjs/mean?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://travis-ci.org/meanjs/mean.svg?branch=master)](https://travis-ci.org/meanjs/mean)
-[![Dependencies Status](https://david-dm.org/meanjs/mean.svg)](https://david-dm.org/meanjs/mean)
-[![Coverage Status](https://coveralls.io/repos/meanjs/mean/badge.svg?branch=master&service=github)](https://coveralls.io/github/meanjs/mean?branch=master)
-[![Known Vulnerabilities](https://snyk.io/test/github/meanjs/mean/badge.svg)](https://snyk.io/test/github/meanjs/mean)
+| Sign up | Sign in |
+| ------- | ------- |
+| <img src="https://raw.githubusercontent.com/ihinsdale/mean-local-auth/master/screenshots/signup.png" alt="Sign up screenshot" width="300px"/> | <img src="https://raw.githubusercontent.com/ihinsdale/mean-local-auth/master/screenshots/signin.png" alt="Sign in screenshot" width="300px"/> |
 
-MEAN.JS is a full-stack JavaScript open-source solution, which provides a solid starting point for [MongoDB](http://www.mongodb.org/), [Node.js](http://www.nodejs.org/), [Express](http://expressjs.com/), and [AngularJS](http://angularjs.org/) based applications. The idea is to solve the common issues with connecting those frameworks, build a robust framework to support daily development needs, and help developers use better practices while working with popular JavaScript components.
+| Password reset request | Change password | Password changed |
+| ---------------------- | --------------- | ---------------- |
+| <img src="https://raw.githubusercontent.com/ihinsdale/mean-local-auth/master/screenshots/passwordresetrequest.png" alt="Password reset request screenshot" width="300px"/> | <img src="https://raw.githubusercontent.com/ihinsdale/mean-local-auth/master/screenshots/changepassword.png" alt="Change password screenshot" width="300px"/> | <img src="https://raw.githubusercontent.com/ihinsdale/mean-local-auth/master/screenshots/successfulpasswordchange.png" alt="Successful password change screenshot" width="300px"/> |
 
-## Before You Begin
-Before you begin we recommend you read about the basic building blocks that assemble a MEAN.JS application:
-* MongoDB - Go through [MongoDB Official Website](http://mongodb.org/) and proceed to their [Official Manual](http://docs.mongodb.org/manual/), which should help you understand NoSQL and MongoDB better.
-* Express - The best way to understand express is through its [Official Website](http://expressjs.com/), which has a [Getting Started](http://expressjs.com/starter/installing.html) guide, as well as an [ExpressJS](http://expressjs.com/en/guide/routing.html) guide for general express topics. You can also go through this [StackOverflow Thread](http://stackoverflow.com/questions/8144214/learning-express-for-node-js) for more resources.
-* AngularJS - Angular's [Official Website](http://angularjs.org/) is a great starting point. You can also use [Thinkster Popular Guide](http://www.thinkster.io/), and [Egghead Videos](https://egghead.io/).
-* Node.js - Start by going through [Node.js Official Website](http://nodejs.org/) and this [StackOverflow Thread](http://stackoverflow.com/questions/2353818/how-do-i-get-started-with-node-js), which should get you going with the Node.js platform in no time.
+##<a name="description"></a>Description
 
+mean-local-auth is a seed/starter app for any project that requires local authentication (as opposed to sign-in via Twitter, Facebook, etc.). mean-local-auth provides sign-up, sign-in, and password resetting functionality.
 
-## Prerequisites
-Make sure you have installed all of the following prerequisites on your development machine:
-* Git - [Download & Install Git](https://git-scm.com/downloads). OSX and Linux machines typically have this already installed.
-* Node.js - [Download & Install Node.js](https://nodejs.org/en/download/) and the npm package manager. If you encounter any problems, you can also use this [GitHub Gist](https://gist.github.com/isaacs/579814) to install Node.js.
-* MongoDB - [Download & Install MongoDB](http://www.mongodb.org/downloads), and make sure it's running on the default port (27017).
-* Bower - You're going to use the [Bower Package Manager](http://bower.io/) to manage your front-end packages. Make sure you've installed Node.js and npm first, then install bower globally using npm:
+**Sign-up** involves creating a username and password and specifying an email address for the user account. Usernames and email addresses must be unique; mean-local-auth dynamically checks whether a username and email are available as the user completes the sign-up form. mean-local-auth also checks that the user's password meets requirements (at least 8 characters, 1 numeral, and 1 uppercase letter). This validation is performed on both the client and server side.
 
-```bash
-$ npm install -g bower
-```
+**Sign-in** is what you'd expect, plus the following:
+* Users can sign in using their username *or* email address.
+* mean-local-auth implements client-side validation of the password, to make sure it meets requirements, before sending a request to the server.
+* A Bootstrap alert is displayed after invalid sign-in attempts.
 
-## Downloading MEAN.JS
-There are several ways you can get the MEAN.JS boilerplate:
+**Password resetting** is accomplished using the password-reset-nodemailer node module, which implements the best practice of emailing the user a link containing an expiring token that allows them to choose a new password. mean-local-auth is configured to use AWS's Simple Email Service to send these password reset emails.
 
-### Cloning The GitHub Repository
-The recommended way to get MEAN.js is to use git to directly clone the MEAN.JS repository:
+##<a name="stack"></a>Stack
 
-```bash
-$ git clone https://github.com/meanjs/mean.git meanjs
-```
+| Server side | Client side | Configuration management | Testing |
+| ----------- | ----------- | ------------------------ | ------- |
+| ![Node.js](https://raw.githubusercontent.com/ihinsdale/mean-local-auth/master/readme_badges/nodejs.png) | ![AngularJS](https://raw.githubusercontent.com/ihinsdale/mean-local-auth/master/readme_badges/angular.png) | ![Ansible](https://raw.githubusercontent.com/ihinsdale/mean-local-auth/master/readme_badges/ansible.png) | ![Mocha](https://raw.githubusercontent.com/ihinsdale/mean-local-auth/master/readme_badges/mocha.png) |
+| ![Express](https://raw.githubusercontent.com/ihinsdale/mean-local-auth/master/readme_badges/express.png) | ![Bootstrap](https://raw.githubusercontent.com/ihinsdale/mean-local-auth/master/readme_badges/bootstrap.png) |
+| ![MongoDB](https://raw.githubusercontent.com/ihinsdale/mean-local-auth/master/readme_badges/mongodb.png) |
+| ![Redis](https://raw.githubusercontent.com/ihinsdale/mean-local-auth/master/readme_badges/redis.png) |
+| ![Nginx](https://raw.githubusercontent.com/ihinsdale/mean-local-auth/master/readme_badges/nginx.png) |
 
-This will clone the latest version of the MEAN.JS repository to a **meanjs** folder.
+##<a name="code-overview"></a>Overview of the code
 
-### Downloading The Repository Zip File
-Another way to use the MEAN.JS boilerplate is to download a zip copy from the [master branch on GitHub](https://github.com/meanjs/mean/archive/master.zip). You can also do this using the `wget` command:
+`/lib` contains server-side app code.
 
-```bash
-$ wget https://github.com/meanjs/mean/archive/master.zip -O meanjs.zip; unzip meanjs.zip; rm meanjs.zip
-```
+`/node_modules_custom` contains node modules whose source code has been modified for custom use with the app. `/node_modules_custom/orig` contains unmodified copies of the modified node modules.
 
-Don't forget to rename **mean-master** after your project name.
+`/public` contains all front-end assets like Angular.js code.
 
-### Yo Generator
-Another way would be to use the [Official Yo Generator](http://meanjs.org/generator.html), which generates a copy of the MEAN.JS 0.4.x boilerplate and supplies an application generator to ease your daily development cycles.
+`/sysadmin` contains files supporting the deployment and systems-administration of the app. See the  [next section](#how-to-use) for more info.
 
-## Quick Install
-Once you've downloaded the boilerplate and installed all the prerequisites, you're just a few steps away from starting to develop your MEAN application.
+`/test` contains all code related to the testing of the app. Currently, integration tests cover all server endpoints. All tests pass.
 
-The boilerplate comes pre-bundled with a `package.json` and `bower.json` files that contain the list of modules you need to start your application.
+mean-local-auth doesn't use a build tool like Grunt or Gulp. Hence there is no minification, CSS preprocessing, etc. Better to leave those choices up to the developer.
 
-To install the dependencies, run this in the application folder from the command-line:
+mean-local-auth also doesn't distinguish between development/staging/production environments; that is again left to the developer.
 
-```bash
-$ npm install
-```
+##<a name="how-to-use"></a>How to use mean-local-auth to kickstart your project
 
-This command does a few things:
-* First it will install the dependencies needed for the application to run.
-* If you're running in a development environment, it will then also install development dependencies needed for testing and running your application.
-* When the npm packages install process is over, npm will initiate a bower install command to install all the front-end modules needed for the application
-* To update these packages later on, just run `npm update`
+Of course, you can always extract any parts of the code that are useful to you. But mean-local-auth comes with Ansible playbooks which can deploy your very own version of the app, with just a little configuration. For very little work, you'll have:
+* an Angular app supporting local authentication,
+* backed by an Express 4 server
+* and a Mongo database,
+* using Redis for session support
+* and Nginx as a reverse-proxy serving static files and redirecting all connections over HTTPS.
 
-## Running Your Application
+These Ansible playbooks are written to deploy the app to one server, but they can easily be adapted to create a scalable multi-tiered architecture.
 
-Run your application using npm:
+#### Deploying mean-local-auth for the first time:
 
-```bash
-$ npm start
-```
+1. Fork the mean-local-auth repo, and clone your fork on your local development machine.
 
-Your application should run on port 3000 with the *development* environment configuration, so in your browser just go to [http://localhost:3000](http://localhost:3000)
+1. Within the project directory, run `bower install` and `npm install` to install dependencies.
 
-That's it! Your application should be running. To proceed with your development, check the other sections in this documentation.
-If you encounter any problems, try the Troubleshooting section.
+1. On your local development machine, create an RSA keypair for SSHing into the server where you'll deploy mean-local-auth. mean-local-auth assumes this keypair will be called `mean-local-auth` and will be located in `~/.ssh`. You can use the following command:
 
-Explore `config/env/development.js` for development environment configuration options.
+        ssh-keygen -t rsa -f ~/.ssh/mean-local-auth -N ''
 
-### Running in Production mode
-To run your application with *production* environment configuration:
+1. Create a server with your favored cloud provider (e.g. DigitalOcean, AWS). It should run Ubuntu 14.04 x64. When creating your server, specify `mean-local-auth.pub` for use with SSH.
 
-```bash
-$ npm run start:prod
-```
+1. If you already have an SSL certificate and private key for your server, place them in `/sysadmin/dev/roles/nginx/files` in your clone of the mean-local-auth repo. Update lines 55 and 56 of `/sysadmin/dev/roles/nginx/templates/nginx.conf.j2` with the filenames of your certificate and key.
 
-Explore `config/env/production.js` for production environment configuration options.
+    If you need to generate your own certificate and key, you may use:
 
-### Running with User Seed
-To have default account(s) seeded at runtime:
+        cd sysadmin/dev/roles/nginx/files
+        sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt
 
-In Development:
-```bash
-MONGO_SEED=true npm start
-```
-It will try to seed the users 'user' and 'admin'. If one of the user already exists, it will display an error message on the console. Just grab the passwords from the console.
+    Use your domain name, if you have one, or the IP address of your server for the certificate's Common Name. Update lines 55 and 56 with server.crt and server.key respectively. Note that if you use a self-signed SSL certificate, for the tests in ``/test/express/auth.js` to work you will need to ensure you have set
 
-In Production:
-```bash
-MONGO_SEED=true npm start:prod
-```
-This will seed the admin user one time if the user does not already exist. You have to copy the password from the console and save it.
+        process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-### Running with TLS (SSL)
-Application will start by default with secure configuration (SSL mode) turned on and listen on port 8443.
-To run your application in a secure manner you'll need to use OpenSSL and generate a set of self-signed certificates. Unix-based users can use the following command:
+    at the beginning of `/test/express/auth.js`.
 
-```bash
-$ npm run generate-ssl-certs
-```
+1. You may want to add your SSL certificate and key files to your .gitignore.
 
-Windows users can follow instructions found [here](http://www.websense.com/support/article/kbarticle/How-to-use-OpenSSL-and-Microsoft-Certification-Authority).
-After you've generated the key and certificate, place them in the *config/sslcerts* folder.
+1. From within `/sysadmin/dev`, configure `/groups_vars/all` for your situation:
+    * For `forked_repo_url`, specify the URL of your fork (created in step 1) of the mean-local-auth repo.
 
-Finally, execute prod task `npm run start:prod`
-* enable/disable SSL mode in production environment change the `secure` option in `config/env/production.js`
+        Note that if your fork is private, you will need to customize the `Clone your fork of the mean-local-auth repo` task in `/sysadmin/dev/roles/node/tasks/main.yml` with the authentication credentials necessary to clone your repo.
+    * Specify the IP of the server where the app will be deployed, in the `meanlocalauth_ip` variable.
+    * mean-local-auth assumes you'll be SSHing into your server from a VPN or at least a static IP. Specify the IP you'll be connecting to your server from, in the `vpn_ip` variable. This is the only IP address which will have SSH access to your server.
+    * In `new_ssh_port`, you can specify an alternate port to connect via SSH, if you don't like 22. If you do choose an alternate, make sure it's less than 1024.
+    * Provide an email address in `logwatch_email` and `fail2ban_email` where you'll receive monitoring emails from these services.
+    * Provide crypted passwords for the root and deploy users. In case you don't know how to hash a password, the comment above `root_password` and `deploy_password` contains instructions.
 
+1. Configure `/group_vars/mongoservers` for your situation:
+    * Choose a password for the master user of your Mongo database.
+    * Choose a password for app_db_user (the user which the app will connect to the database as).
 
-## Testing Your Application
-You can run the full test suite included with MEAN.JS with the test task:
+1. If you wish to keep the contents of the `/group_vars` files private, but still tracked in version control, you can use [ansible-vault](http://docs.ansible.com/playbooks_vault.html) to encrypt them. From within `/group_vars`, you can use the command:
 
-```bash
-$ npm test
-```
-This will run both the server-side tests (located in the `app/tests/` directory) and the client-side tests (located in the `public/modules/*/tests/`).
+        ansible-vault encrypt all mongoservers nginxservers redisservers
 
-To execute only the server tests, run the test:server task:
+1. Configure `/lib/config/config.json`:
+    * For `db.password`, enter the `app_db_user_password` you specified in `/sysadmin/dev/group_vars/mongoservers`.
+    * Choose secrets for `secrets.cookieParser` and `secrets.session`.
+    * For `publicDNS`, enter the domain name (e.g. example.com) or IP address of your server.
+    * For `passwordResetSenderEmail`, enter an email address you control. This email address will be the sender of password reset emails.
+    * In `AWSSES`, enter the access key id and secret access key associated with your AWS account. These credentials are used to send password reset emails via AWS's Simple Email Service (SES). To successfully send password reset emails, you will need to login to SES and follow the necessary steps to verify the email address you specified in `passwordResetSenderEmail`. If your SES account uses a region other than us-east-1, update `AWSSES.regionUrl` accordingly.
 
-```bash
-$ npm run test:server
-```
+        If you prefer to use a different provider for sending password reset emails, you would customize `forgot` within `/lib/routes/passwordReset.js`.
+    * In `testing.email` and `testing.email2`, enter different email addresses that can be used by the tests in `/test/express/auth.js` to test the creation of user accounts.
 
-To execute only the server tests and run again only changed tests, run the test:server:watch task:
+1. If you don't want your configuration information/credentials to be stored in version control, add a line for config.json to your .gitignore file, then type:
 
-```bash
-$ npm run test:server:watch
-```
+        git rm --cached lib/config/config.json
 
-And to run only the client tests, run the test:client task:
+    to untrack the file from your repo. Then commit and push to origin.
 
-```bash
-$ npm run test:client
-```
+1. In the `/sysadmin/dev/development` inventory file, replace all four instances of `ansible_ssh_host=` with the IP address of your server. This will be the same IP you used to define `meanlocalauth_ip` in `/group_vars/all`.
 
-## Running your application with Gulp
+1. You are now ready to deploy. From within `/sysadmin/dev`, run:
 
-The MEAN.JS project integrates Gulp as build tools and task automation.
+        ansible-playbook -i development site.yml -vvvv
 
-We have wrapped Gulp tasks with npm scripts so that regardless of the build tool running the project is transparent to you.
+    If you used ansible-vault to encrypt your `/group_vars` files, you will need to add the `--ask-vault-pass` flag to this command.
 
-To use Gulp directly, you need to first install it globally:
+That's it! If the playbook finished without error, as it should have, your own version of mean-local-auth will be up and running. In a browser, navigate to your server's address and see!
 
-```bash
-$ npm install gulp -g
-```
+This deployment procedure has been tested successfully multiple times. Nevertheless, if you have any problems, please open an [issue ticket](https://github.com/ihinsdale/mean-local-auth/issues).
 
-Then start the development environment with:
+#### Upgrading your app code
 
-```bash
-$ gulp
-```
+As you modify mean-local-auth, you'll want to update the code on your server. To do that, from within `/sysadmin/dev`, just run:
 
-To run your application with *production* environment configuration, execute gulp as follows:
+    ansible-playbook -i development upgrade_app_code.yml -vvvv -e ansible_ssh_port=22
 
-```bash
-$ gulp prod
-```
+Two things to note about this command:
+* If you used ansible-vault to encrypt your `/group_vars` files, you will need to add the `--ask-vault-pass` flag to this command.
 
-It is also possible to run any Gulp tasks using npm's run command and therefore use locally installed version of gulp, for example: `npm run gulp eslint`
+* `ansible_ssh_port` should be set to whatever you specified for `new_ssh_port` in `/sysadmin/dev/group_vars/all`.
 
-## Development and deployment With Docker
+##<a name="license"></a>License
 
-* Install [Docker](https://docs.docker.com/installation/#installation)
-* Install [Compose](https://docs.docker.com/compose/install/)
-
-* Local development and testing with compose:
-```bash
-$ docker-compose up
-```
-
-* Local development and testing with just Docker:
-```bash
-$ docker build -t mean .
-$ docker run -p 27017:27017 -d --name db mongo
-$ docker run -p 3000:3000 --link db:db_1 mean
-$
-```
-
-* To enable live reload, forward port 35729 and mount /app and /public as volumes:
-```bash
-$ docker run -p 3000:3000 -p 35729:35729 -v /Users/mdl/workspace/mean-stack/mean/public:/home/mean/public -v /Users/mdl/workspace/mean-stack/mean/app:/home/mean/app --link db:db_1 mean
-```
-
-### Production deploy with Docker
-
-* Production deployment with compose:
-```bash
-$ docker-compose -f docker-compose-production.yml up -d
-```
-
-* Production deployment with just Docker:
-```bash
-$ docker build -t mean -f Dockerfile-production .
-$ docker run -p 27017:27017 -d --name db mongo
-$ docker run -p 3000:3000 --link db:db_1 mean
-```
-
-## Deploying to PAAS
-
-###  Deploying MEANJS To Heroku
-
-By clicking the button below you can signup for Heroku and deploy a working copy of MEANJS to the cloud without having to do the steps above.
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
-### Amazon S3 configuration
-
-To save the profile images to S3, simply set those environment variables:
-UPLOADS_STORAGE: s3
-S3_BUCKET: the name of the bucket where the images will be saved
-S3_ACCESS_KEY_ID: Your S3 access key
-S3_SECRET_ACCESS_KEY: Your S3 access key password
-
-## Getting Started With MEAN.JS
-You have your application running, but there is a lot of stuff to understand. We recommend you go over the [Official Documentation](http://meanjs.org/docs.html).
-In the docs we'll try to explain both general concepts of MEAN components and give you some guidelines to help you improve your development process. We tried covering as many aspects as possible, and will keep it updated by your request. You can also help us develop and improve the documentation by checking out the *gh-pages* branch of this repository.
-
-## Community
-* Use the [Official Website](http://meanjs.org) to learn about changes and the roadmap.
-* Join #meanjs on freenode.
-* Discuss it in the new [Google Group](https://groups.google.com/d/forum/meanjs)
-* Ping us on [Twitter](http://twitter.com/meanjsorg) and [Facebook](http://facebook.com/meanjs)
-
-## Contributing
-We welcome pull requests from the community! Just be sure to read the [contributing](https://github.com/meanjs/mean/blob/master/CONTRIBUTING.md) doc to get started.
-
-## Credits
-Inspired by the great work of [Madhusudhan Srinivasa](https://github.com/madhums/)
-The MEAN name was coined by [Valeri Karpov](http://blog.mongodb.org/post/49262866911/the-mean-stack-mongodb-expressjs-angularjs-and).
-
-## License
-[The MIT License](LICENSE.md)
+See LICENSE
